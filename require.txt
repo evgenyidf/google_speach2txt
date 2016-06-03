@@ -1,0 +1,42 @@
+apt-get install python-dev
+pip install bpython
+pip install ipython
+pip install speechrecognition
+apt-get install python-pyrex
+apt-get install libasound2-dev
+pip install pyalsa
+apt-get install python-pyaudio
+pip install pyalsaaudio
+pip install oauth2client
+pip install google-api-python-client
+#script for overlocking http://www.jackenhack.com/raspberry-pi-3-overclocking/
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
+/opt/vc/bin/vcgencmd measure_temp
+
+
+# Skype installation https://eltechs.com/run-skype-on-raspberry-pi/
+apt-get install cpufrequtils
+
+# skype
+dpkg --add-architecture i386 && apt update && apt install libxv1:i386
+dpkg -i skype-debian_4.3.0.37-1_i386.deb
+apt-get -f install
+
+# pulseaudio 
+apt-get install pulseaudio pulseaudio-module-zeroconf avahi-daemon
+
+#based on https://www.raspberrypi.org/forums/viewtopic.php?f=38&t=11124
+
+# /etc/modprobe.d/alsa-base.conf
+
+# access grants
+gpasswd -a root pulse-access
+gpasswd -a root pulse
+gpasswd -a pi pulse-access
+gpasswd -a pi pulse
+gpasswd -a pulse audio
+gpasswd -a pi audio
+
+# /etc/pulse/system.pa
+load-module module-native-protocol-unix auth-anonymous=1
+
